@@ -1,0 +1,37 @@
+---
+- name: update web, nfs and db servers
+  hosts: webservers, nfs, db
+  become: yes
+  tasks:
+    - name: ensure wireshark is at the latest version
+      yum:
+        name: wireshark
+        state: latest
+
+- name: update LB server
+  hosts: lb
+  become: yes
+  tasks:
+    - name: Update apt repo
+      apt:
+        update_cache: yes
+    - name: ensure wireshark is at the latest version
+      apt:
+        name: wireshark
+        state: latest
+
+
+- name: create directory and fil
+  hosts: all
+  become: yes
+  tasks: 
+    - name: create a directory
+      file:
+        path: C:\Users\HP PAVALION\Documents\Allens-Dev\config mgt\ansible-config-mgt\playbooks\new_dir
+        state: directory
+        mode: '0755'
+    - name: create a file
+      copy:
+        destination: C:\Users\HP PAVALION\Documents\Allens-Dev\config mgt\ansible-config-mgt\playbooks\new_dir\new_file
+        content: "This is the content of the file.\n"
+        mode: '0644'
