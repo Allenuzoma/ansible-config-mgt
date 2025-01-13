@@ -17,8 +17,28 @@ sudo apt install ansible
 
    
 ## Step 1 - Install and Configure Ansible on EC2 Instance
-- Update the Name tag on your Jenkins EC2 Instance to Jenkins-Ansible. We
-will use this server to run playbooks.
+
+ - First we will rename our initial Jenkins AWS instance to Jenkins-Ansible. We will use this server for all our ansible operations and also to run our playbooks.
+
+   - ![ansible server details](https://github.com/user-attachments/assets/7e5754b8-e233-4276-a909-9ae7afcfeef9)
+
+
+   - Now we will install ansible on this insatance
+
+```sh
+sudo apt update
+sudo apt install ansible
+ansible --version
+
+```
+
+- ![ansible version](https://github.com/user-attachments/assets/c4f47b45-3145-4274-831d-06bf882baa2c)
+
+## Configure Jenkins build job to archive your repository content 
+
+   - We will configure our jenkin build to be able to archive contents of our repository content `ansible-config-mgt`.
+
+
 
 In your GitHub account create a new repository and name it ansible￾config-mgt.
 3. Install Ansible (see: install Ansible with pip)
