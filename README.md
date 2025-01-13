@@ -2,9 +2,12 @@
 
 # ANSIBLE-CONFIGURATION-MANAGEMENT
 
-   - First we will rename our initial Jenkins instance to Jenkins-Ansible. We will use this server for our ansible operations.
+   - First we will rename our initial Jenkins AWS instance to Jenkins-Ansible. We will use this server for all our ansible operations.
 
-2. Now we will install ansible on this insatance
+   - ![ansible server details](https://github.com/user-attachments/assets/7e5754b8-e233-4276-a909-9ae7afcfeef9)
+
+
+   - Now we will install ansible on this insatance
 
 ```sh
 sudo apt update
