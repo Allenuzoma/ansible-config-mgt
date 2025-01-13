@@ -2,18 +2,7 @@
 
 # ANSIBLE-CONFIGURATION-MANAGEMENT
 
-   - First we will rename our initial Jenkins AWS instance to Jenkins-Ansible. We will use this server for all our ansible operations.
-
-   - ![ansible server details](https://github.com/user-attachments/assets/7e5754b8-e233-4276-a909-9ae7afcfeef9)
-
-
-   - Now we will install ansible on this insatance
-
-```sh
-sudo apt update
-sudo apt install ansible
-
-```
+   
 
    
 ## Step 1 - Install and Configure Ansible on EC2 Instance
@@ -34,32 +23,20 @@ ansible --version
 
 - ![ansible version](https://github.com/user-attachments/assets/c4f47b45-3145-4274-831d-06bf882baa2c)
 
-## Configure Jenkins build job to archive your repository content 
+## Step 2 - Configure Jenkins build job to archive your repository content 
 
+   - Create a repository on github named `ansible-config-mgt`
    - We will configure our jenkin build to be able to archive contents of our repository content `ansible-config-mgt`.
+   - Create a new Freestyle project ansible in Jenkins and point it to your 'ansible-config-mgt' repository.
+   - Configure a webhook in GitHub and set the webhook totrigger ansible build.
+   - Configure a Post-build job to save all (**) files, like you did it in Project
+   - Test your setup by making some change in README.md file in the main branch and make sure that builds starts automatically andJenkins saves the files (build artifacts) in the       
+     following folder
+```sh
 
-
-
-In your GitHub account create a new repository and name it ansible￾config-mgt.
-3. Install Ansible (see: install Ansible with pip)
-sudo apt update
-sudo apt install ansible
-Check your Ansible version by running ansible --version
-46% COMPLETE
- Previous Lesson Next Lesson 
-4. Configure Jenkins build job to archive your repository content every
-time you change it - this will solidify your Jenkins configuration skills
-acquired in Project 9.
-Create a new Freestyle project ansible in Jenkins and point it to your
-'ansible-config-mgt' repository.
-Configure a webhook in GitHub and set the webhook to
-trigger ansible build.
-Configure a Post-build job to save all (**) files, like you did it in Project
-9.
-5. Test your setup by making some change in README.md file
-in master branch and make sure that builds starts automatically and
-Jenkins saves the files (build artifacts) in following folder
 ls /var/lib/jenkins/jobs/ansible/builds/<build_number>/archive/
+
+```
 Note: Trigger Jenkins project execution only for main (or master) branch.
 Now your setup will look like this:
 Tip: Every time you stop/start your Jenkins-Ansible server - you have to
